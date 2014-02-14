@@ -35,6 +35,10 @@ class Yaml extends Base
      */
     public function load($file)
     {
+        if (is_array($file)) {
+            return parent::load($file);
+        }
+
         ob_start();
         $loader = $this;
         $includeWrapper = function () use ($file, $loader) {
